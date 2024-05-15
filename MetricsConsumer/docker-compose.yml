@@ -4,7 +4,7 @@ services:
   postgres:
     image: postgres:15.3
     environment:
-      POSTGRES_DB: timeTrackingDb
+      POSTGRES_DB: metricsDb
       POSTGRES_USER: user
       POSTGRES_PASSWORD: 4321
     ports:

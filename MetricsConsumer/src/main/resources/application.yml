@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: MetricsConsumerApplication
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:8080
+      group-id: metrics-consumer-group
+      auto-offset-reset: earliest
+      value-deserializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        isolation.level: read_committed
+    listener:
+      type: batch
+    metrics:
+      topic: metrics-topic
+      group-id: metricsGroup
+      client-id-prefix: t1
+datasource:
+    url: jdbc:postgresql://localhost:6666/metricsDb
+    username: user
+    password: 4321
+    driver-class-name: org.postgresql.Driver
+jpa:
+  hibernate:
+  ddl-auto: create-drop
