@@ -18,10 +18,10 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("api/metrics")
+@RequestMapping("api/metrics-consumer")
 @RequiredArgsConstructor
 @Tag(name = "Metrics Consumer", description = "Микросервис для просмотра и анализа метрик")
-public class MetricsController {
+public class MetricsConsumerController {
 
     private final MetricsService metricsService;
 
@@ -29,7 +29,6 @@ public class MetricsController {
             description = "Возвращает общий список всех метрик")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Успешный запрос"),
-
     })
     @GetMapping("/metrics")
     public List<MetricDto> getAllMetrics() {
@@ -42,11 +41,11 @@ public class MetricsController {
             @ApiResponse(responseCode = "200", description = "Успешный запрос"),
             @ApiResponse(responseCode = "404", description = "Метрика отсутствует")
     })
-    @GetMapping("metrics/{id}")
+    @GetMapping("/metrics/{id}")
     public ResponseEntity<MetricDto> getMetricById(@PathVariable String id) {
         try {
-            Long metricId = Long.valueOf(id);
-            Optional<MetricDto> metricDto = metricsService.findById(metricId);
+            Optional<MetricDto> metricDto = metricsService
+                    .findById(Long.valueOf(id));
             return metricDto.map(ResponseEntity::ok).orElseGet(() ->
                     ResponseEntity.notFound().build());
         } catch (NumberFormatException e) {

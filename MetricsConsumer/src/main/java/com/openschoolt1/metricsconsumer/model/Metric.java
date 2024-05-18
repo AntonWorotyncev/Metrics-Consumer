@@ -1,11 +1,10 @@
 package com.openschoolt1.metricsconsumer.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Setter
@@ -14,44 +13,23 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Metric {
     /*
-    Идентификатор метрики
-     */
+      Идентификатор метрики
+    */
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     /*
-    Временная метка
+      ВременнАя метка
     */
     private Long timestamp;
     /*
-    Колличество HTTP запросов
-     */
-    private Long httpServerRequests;
-    /*
-    Среднее время выполнения HTTP запросов
-     */
-    private Double httpServerRequestsAvgTime;
-    /*
-      Использование памяти JVM
+      Использование памяти JVM приложением MetricsProducer
      */
     private Long jvmMemoryUsed;
+
     /*
-     Максимальный объем памяти JVM
-     */
+    Максимальный объем памяти,
+    который JVM разрешено использовать во работы приложения MetricsProducer
+   */
     private Long jvmMemoryMax;
-    /*
-    Количество доступных процессоров
-     */
-    private Integer systemCpuCount;
-    /*
-     Загрузка процессора
-     */
-    private Double systemCpuUsage;
-    /*
-     Время работы процесса
-     */
-    private Long processUptime;
-    /*
-     Средняя загрузка системы
-     */
-    private Double systemLoadAverage;
 }

@@ -6,6 +6,5 @@ import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface MetricMetricDtoMapper {
-    Metric  metricDtoToMetric(MetricDto metricDto);
     MetricDto metricToMetricDto(Metric metric);
 }

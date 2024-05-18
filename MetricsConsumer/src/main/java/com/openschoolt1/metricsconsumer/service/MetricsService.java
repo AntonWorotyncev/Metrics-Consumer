@@ -11,5 +11,8 @@ public interface MetricsService {
      */
     Optional<MetricDto> findById(Long id);
 
+    /*
+    Получение метрики по её идентификатору
+     */
     List<MetricDto> findAllMetrics();
 }
