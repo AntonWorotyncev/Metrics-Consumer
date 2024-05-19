@@ -25,8 +25,12 @@ public class MetricsConsumerController {
 
     private final MetricsService metricsService;
 
-    @Operation(summary = "Получить список всех метрик приложения",
-            description = "Возвращает общий список всех метрик")
+    @Operation(summary = "Получить список всех метрик приложения. В данном случае ",
+            description = """
+                     Возвращает общий список всех метрик
+                                        Метрики включают в себя jvmMemoryMax - максимальная память JVM (в байтах)
+                                        " а jvmMemoryUsed - задействованная память JVM (в байтах).
+                    """)
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Успешный запрос"),
     })
